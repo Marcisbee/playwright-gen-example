@@ -4,7 +4,10 @@ VERSION := 1.49.1
 PLAYWRIGHT := ./node_modules/.bin/playwright
 
 prepare:
-	curl -fsSL https://fnm.vercel.app/install | bash
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	curl -o- https://fnm.vercel.app/install | bash
+	eval "$(fnm env --use-on-cd --shell zsh)"
 	fnm install 22
 	fnm use 22
 	node -v
