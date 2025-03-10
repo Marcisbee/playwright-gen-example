@@ -4,7 +4,7 @@ VERSION := 1.49.1
 PLAYWRIGHT := ./node_modules/.bin/playwright
 
 prepare:
-	HOMEBREW_NO_AUTO_UPDATE=1 brew install fnm
+	curl -fsSL https://fnm.vercel.app/install | bash
 	fnm install 22
 	fnm use 22
 	node -v
