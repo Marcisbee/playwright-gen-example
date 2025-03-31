@@ -11,8 +11,14 @@ task_test() {
 task_codegen() {
   start_task prepare
 
-  # echo "${@}"
   ./deno run --allow-all npm:playwright@1.51.1 codegen --target="playwright-test" "${@}"
+}
+
+# ./tasks.sh report
+task_report() {
+  start_task prepare
+
+  ./deno run --allow-all npm:playwright@1.51.1 show-report
 }
 
 # --- PREPARE ---
