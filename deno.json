@@ -1,0 +1,6 @@
+{
+  "nodeModulesDir": "auto",
+  "imports": {
+    "@playwright/test": "npm:@playwright/test@1.51.1"
+  }
+}

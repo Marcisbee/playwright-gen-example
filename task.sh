@@ -4,7 +4,7 @@
 task_test() {
   start_task prepare
 
-  ./deno run --allow-all npm:playwright@1.51.1 test --trace=on "${@}"
+  PW_DISABLE_TS_ESM=1 ./deno run --allow-all npm:playwright@1.51.1 test --trace=on "${@}"
 }
 
 # ./tasks.sh codegen --output="./todo-mvc-3.ts" https://demo.playwright.dev/todomvc
