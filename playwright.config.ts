@@ -4,20 +4,27 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-	reporter: "html",
-	testMatch: ["*/tests/**/*.ts", "*/**/setup.ts"],
-	timeout: 30 * 1000,
-	fullyParallel: false,
-	workers: 1,
-	projects: [
-		{
-			name: 'setup',
-			testMatch: '**/setup.ts',
-		},
-		{
-			name: 'chromium',
-			use: { ...devices['Desktop Chrome'] },
-			dependencies: ['setup'],
-		},
-	],
+  reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    ['json', { outputFile: 'test-results.json' }]
+  ],
+  testMatch: ["*/tests/**/*.ts", "*/session/**/setup.ts"],
+  timeout: 10 * 1000,
+  fullyParallel: false,
+  workers: 1,
+  maxFailures: 1,
+  retries: 0,
+  projects: [
+    {
+      name: 'setup',
+      testMatch: '*/session/**/setup.ts',
+    },
+    {
+      name: 'chromium',
+      use: { ...devices['Desktop Chrome'] },
+      dependencies: ['setup'],
+      testMatch: 'tests/**/*.ts',
+    },
+  ],
 });

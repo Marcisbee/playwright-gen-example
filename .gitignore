@@ -4,3 +4,7 @@
 auth.json
 /test-results
 deno
+/blob-report
+test-results.json
+app/.tmp/auth_info.json
+.DS_Store
