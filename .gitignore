@@ -9,3 +9,4 @@ test-results.json
 app/.tmp/auth_info.json
 .DS_Store
 .env
+/Playwriter.app

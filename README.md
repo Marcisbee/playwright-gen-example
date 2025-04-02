@@ -1,5 +1,10 @@
 # Playwright test gen
 
+## Desktop app install (optional):
+```sh
+curl -SsfL https://raw.githubusercontent.com/Marcisbee/playwriter/refs/heads/main/install.sh | bash
+```
+
 To work with this you'll need to run these commands in "Terminal" app from macos (note that mouse probably won't really help there, use keyboard).
 
 1. Run all tests:
