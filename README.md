@@ -66,3 +66,35 @@ await page.context().storageState({ path: 'session/pocketbase/auth.json' });
 ```sh
 ./tasks.sh show-report
 ```
+
+## Adding new dynamic variable
+
+Open `env.config` file and add a new line with name of the variable and type separated by equals sign `=`.
+
+Example:
+```
+MY_NEW_VARIABLE=generic
+```
+
+There are multiple types available:
+- `generic` - will make random value similar to this: `TEST_1743667557969`
+- `email` - will make random value similar to this: `rand_qa_pw+1743667557970@mail7.app`
+
+## Using dynamic variable
+
+Open test file that was recorded. Find all of the places where value you want to replace with dynamic is used. Then replace it with this:
+```
+'+env.process.MY_NEW_VARIABLE+'
+```
+_(don't forget to replace `MY_NEW_VARIABLE` with the one you want to use)_.
+
+#### Example:
+- Before
+```ts
+  await page.getByRole('textbox', { name: 'What needs to be done?' }).fill('asd');
+```
+
+- After:
+```ts
+  await page.getByRole('textbox', { name: 'What needs to be done?' }).fill(''+env.process.MY_NEW_VARIABLE+'');
+```

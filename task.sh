@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 task_gen_env() {
-  deno run ./scripts/env.ts < ./env.json > .env
+  ./deno run ./scripts/env.ts < ./env.config > .env
 }
 
 # ./tasks.sh test --grep="/pocketbase/"
