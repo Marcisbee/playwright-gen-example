@@ -14,28 +14,7 @@ task_test() {
 # ./tasks.sh codegen --output="./todo-mvc-3.ts" https://demo.playwright.dev/todomvc
 task_codegen() {
   ./deno run --allow-all --env-file=.env npm:playwright@1.51.1 codegen --target="playwright-test" "${@}"
-
-  # Check if test was successful and if --output flag was provided along with --save-storage
-  if [ $? -eq 0 ]; then
-    output_file=""
-    storage_path=""
-
-    # Find the output file
-    for arg in "${@}"; do
-      if [[ $arg == *"--output="* ]]; then
-        output_file="${arg#*=}"
-      elif [[ $arg == *"--save-storage="* ]]; then
-        storage_path="${arg#*=}"
-      fi
-    done
-
-    # If both output file exists and --save-storage was provided
-    if [ -n "$output_file" ] && [ -n "$storage_path" ] && [ -f "$output_file" ]; then
-      # Insert storage state line before the last closing bracket
-      sed -i '' '$s/});/  await page.context().storageState({ path: '"'$storage_path'"' });\n});/' "$output_file"
-      echo "Updated output file: $output_file with storage state save to $storage_path"
-    fi
-  fi
+  ./deno run --allow-all ./scripts/fix-save-auth-path.ts "${@}"
 }
 
 # ./tasks.sh report
