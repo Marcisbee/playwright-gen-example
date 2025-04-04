@@ -84,7 +84,7 @@ There are multiple types available:
 
 Open test file that was recorded. Find all of the places where value you want to replace with dynamic is used. Then replace it with this:
 ```
-'+env.process.MY_NEW_VARIABLE+'
+'+process.env.MY_NEW_VARIABLE+'
 ```
 _(don't forget to replace `MY_NEW_VARIABLE` with the one you want to use)_.
 
@@ -96,5 +96,5 @@ _(don't forget to replace `MY_NEW_VARIABLE` with the one you want to use)_.
 
 - After:
 ```ts
-  await page.getByRole('textbox', { name: 'What needs to be done?' }).fill(''+env.process.MY_NEW_VARIABLE+'');
+  await page.getByRole('textbox', { name: 'What needs to be done?' }).fill(''+process.env.MY_NEW_VARIABLE+'');
 ```
