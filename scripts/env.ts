@@ -6,7 +6,7 @@ const build: Record<string, () => string> = {
     return `TEST_${timestamp + (index++)}`;
   },
   email() {
-    return `rand_qa_pw+${timestamp + (index++)}@mail7.app`;
+    return `rand_qa_pw_${timestamp + (index++)}@maile2e.com`;
   },
 };
 
