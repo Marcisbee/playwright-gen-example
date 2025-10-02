@@ -15,6 +15,7 @@ task_test() {
 task_codegen() {
   ./deno run --allow-all --env-file=.env npm:playwright@1.51.1 codegen --target="playwright-test" "${@}"
   ./deno run --allow-all ./scripts/fix-save-auth-path.ts "${@}"
+  ./deno run --allow-all ./scripts/fix-file-upload.ts "${@}"
 }
 
 # ./tasks.sh types
