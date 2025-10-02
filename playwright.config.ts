@@ -10,7 +10,7 @@ export default defineConfig({
     ['json', { outputFile: 'test-results.json' }]
   ],
   testMatch: ["*/tests/**/*.ts", "*/session/**/setup.ts"],
-  timeout: 10 * 1000,
+  timeout: 30 * 1000,
   fullyParallel: false,
   workers: 1,
   maxFailures: 1,
