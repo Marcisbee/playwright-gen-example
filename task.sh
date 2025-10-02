@@ -17,6 +17,11 @@ task_codegen() {
   ./deno run --allow-all ./scripts/fix-save-auth-path.ts "${@}"
 }
 
+# ./tasks.sh types
+task_types() {
+  ./deno eval "console.log(JSON.stringify(Object.keys((await import('./scripts/env.ts')).build)))"
+}
+
 # ./tasks.sh report
 task_report() {
   ./deno run --allow-all npm:playwright@1.51.1 show-report
